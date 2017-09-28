@@ -1,0 +1,74 @@
+/* Empty. Add your own CSS if you like */
+a {
+    text-decoration: none;
+}
+.home-tabs > .tabs {
+    top: 0;
+}
+.f-content {
+    top: 49px;
+}
+.f-table-title h1{
+    position: relative;
+    height: 44px;
+    line-height: 44px;
+    font-size: 100%;
+    padding: 0;
+    margin: 0;
+    padding-left: 20px;
+    padding-right: 10px;
+    font-weight: bold;
+    background: #efefef;
+}
+.f-table-title h1:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    display: block;
+    width: 6px;
+    height: 20px;
+    margin-top: -10px;
+    background: #d53d38;
+}
+.f-table-title h1 span {
+    color: #666;
+    margin-left: 5px;
+}
+.f-table-title h1 a {
+    font-weight: normal;
+    float: right;
+    color: #999;
+}
+.f-table-body .item {
+    padding: 10px;
+}
+.f-table {
+    width: 100%;
+}
+.f-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    vertical-align: middle;
+}
+.f-dsc-table tr td:first-child{
+    width: 80px;
+}
+.f-left {
+    text-align: left;
+}
+.f-center {
+    text-align: center;
+}
+.f-right {
+    text-align: right;
+}
+.item span {
+    float: right;
+}
+.item .red {
+    color: #d53d38;
+}
+.item .green {
+    color: green;
+}
