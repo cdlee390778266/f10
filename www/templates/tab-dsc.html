@@ -1,80 +1,18 @@
 <ion-view view-title="简介">
   <ion-content class="f-content">
-    <!-- 主要指标 -->
-    <div class="f-table-box">
+    <div class="f-table-box" ng-repeat="item in items">
       <div class="f-table-title">
-        <h1>{{index.name}}<span>(2017年报)</span></h1>
+        <h1>{{item.title.name}}<span>{{item.title.tag}}</span><a ng-show="item.title.moreHref" href="{{item.title.moreHref}}">更多</a></h1>
       </div>
       <div class="f-table-body">
-        <ul class="list">
-          <li class="item" ng-repeat="data in index.data ">
-            <span class="{{data.class}}">{{data.data}}</span> {{data.name}}
+        <ul class="list" ng-if="item.type">
+          <li class="item" ng-repeat="itemData in item.data">
+            <span class="{{itemData.class}}">{{itemData.data}}</span> {{itemData.name}}
           </li>
         </ul>
-      </div>
-    </div>
-    <!-- 公司资料 -->
-    <div class="f-table-box">
-      <div class="f-table-title">
-        <h1>公司资料</h1>
-      </div>
-      <div class="f-table-body">
-        <table class="f-table f-dsc-table">
-          <tr>
-            <td>公司名称</td>
-            <td>凤飞飞凤飞飞</td>
-          </tr>
-          <tr>
-            <td>公司名称</td>
-            <td>凤飞飞凤飞飞凤飞飞凤飞飞凤飞飞凤飞飞凤飞飞凤飞飞凤飞飞凤飞飞</td>
-          </tr>
-          <tr>
-            <td>公司名称</td>
-            <td>凤飞飞凤飞飞</td>
-          </tr>
-        </table>
-      </div>
-    </div>
-    <!-- 分红拆分 -->
-    <div class="f-table-box">
-      <div class="f-table-title">
-        <h1>分红拆分<a href="">更多</a></h1>
-      </div>
-      <div class="f-table-body">
-        <table class="f-table f-dsc-table">
-          <tr>
-            <td>公司名称</td>
-            <td>凤飞飞凤飞飞</td>
-          </tr>
-          <tr>
-            <td>公司名称</td>
-            <td>凤飞飞凤飞飞凤飞飞凤飞飞凤飞飞凤飞飞凤飞飞凤飞飞凤飞飞凤飞飞</td>
-          </tr>
-          <tr>
-            <td>公司名称</td>
-            <td>凤飞飞凤飞飞</td>
-          </tr>
-        </table>
-      </div>
-    </div>
-    <!-- 股本股东 -->
-    <div class="f-table-box">
-      <div class="f-table-title">
-        <h1>股本股东<a href="">更多</a></h1>
-      </div>
-      <div class="f-table-body">
-        <table class="f-table f-dsc-table">
-          <tr>
-            <td>公司名称</td>
-            <td>凤飞飞凤飞飞</td>
-          </tr>
-          <tr>
-            <td>公司名称</td>
-            <td>凤飞飞凤飞飞凤飞飞凤飞飞凤飞飞凤飞飞凤飞飞凤飞飞凤飞飞凤飞飞</td>
-          </tr>
-          <tr>
-            <td>公司名称</td>
-            <td>凤飞飞凤飞飞</td>
+        <table class="f-table f-dsc-table" ng-if="!item.type">
+          <tr ng-repeat="itemData in item.data">
+            <td ng-repeat="itemDataTd in itemData">{{itemDataTd}}</td>
           </tr>
         </table>
       </div>

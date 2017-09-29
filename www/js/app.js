@@ -38,8 +38,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     templateUrl: 'templates/tabs.html'
   })
 
-  // Each tab has its own nav history stack:
-
   .state('tab.dsc', {
     url: '/dsc',
     views: {
@@ -58,6 +56,24 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
           controller: 'FinanceCtrl'
         }
       }
+    })
+
+  .state('dsc-abs', {
+      url: '/dsc-abs',
+      templateUrl: 'templates/dsc-abs.html',
+      controller: 'DscAbsCtrl'
+    })
+
+  .state('dsc-shd', {
+      url: '/dsc-shd',
+      templateUrl: 'templates/dsc-shd.html',
+      controller: 'DscShdCtrl'
+    })
+
+  .state('finance-detail', {
+      url: '/finance-detail?:type',
+      templateUrl: 'templates/finance-detail.html',
+      controller: 'FiDetailCtrl'
     });
 
   // if none of the above states are matched, use this as the fallback

@@ -1,5 +1,19 @@
-<ion-view view-title="Chats">
+<ion-view view-title="财务">
   <ion-content class="f-content">
-    
+    <div class="f-table-box" ng-repeat="item in items">
+      <div class="f-table-title">
+        <h1>{{item.title.name}}{{item.title.tag}}<strong>{{item.title.date}}</strong></h1>
+      </div>
+      <div class="f-table-body finance-body">
+        <ul class="list">
+          <li class="item" ng-repeat="itemData in item.data">
+            <span>{{itemData[1]}}</span> {{itemData[0]}}
+          </li>
+        </ul>
+        <div class="go">
+            <a href="{{item.title.href}}" class="icon ion-chevron-right"></a>
+        </div>
+      </div>
+    </div>
   </ion-content>
 </ion-view>
