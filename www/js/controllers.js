@@ -1,21 +1,60 @@
 angular.module('starter.controllers', [])
 
 .controller('DscCtrl', function($scope, Utils) {
+  
+  $scope.indexLoading = {
+    loading: true,
+    showIcon: true,
+    showError: false
+  }
 
-  $scope.getDataSuccess = function(res) {
+  $scope.cmpLoading = {
+    loading: true,
+    showIcon: true,
+    showError: false
+  }
+
+  $scope.absLoading = {
+    loading: true,
+    showIcon: true,
+    showError: false
+  }
+
+  $scope.shdLoading = {
+    loading: true,
+    showIcon: true,
+    showError: false
+  }
+
+  $scope.getDataSuccess = function(res, tag) {
     var res = res.data;
-    if(!parseInt(res.resultdata)) {
-      $scope.items = res.ResData;
+    if(parseInt(res.resultdata)) {
+      $scope[tag+'Data'] = res.ResData;
+      $scope[tag+'Loading'].loading = false;
+      $scope[tag+'Loading'].showIcon = false;
+      $scope[tag+'Loading'].showError = false;
+    }else {
+      $scope[tag+'Loading'].loading = true;
+      $scope[tag+'Loading'].showIcon = false;
+      $scope[tag+'Loading'].showError = true;
     }
   }
 
-  $scope.getData = function() {
-    Utils.showPop();
-    Utils.getJSON('data/dsc-data.json', '', $scope.getDataSuccess);
+  $scope.getDataError = function(res, tag) {
+    $scope[tag+'Loading'].loading = true;
+    $scope[tag+'Loading'].showIcon = false;
+    $scope[tag+'Loading'].showError = true;
+  }
+
+  $scope.getData = function(url, tag) {
+    Utils.getJSON(url, '', $scope.getDataSuccess, $scope.getDataError, tag);
   }
   
   $scope.init = function() {
-    $scope.getData();
+    $scope.getData('/Dal/GetDataHandler.ashx?funType=F10_AM_ZYZB&code=AAPL&param=', 'index');
+    $scope.getData('/Dal/GetDataHandler.ashx?funType=F10_AM_GSZL&code=AAPL&param=', 'cmp');
+    $scope.getData('data/tab-dsc-abs.json', 'abs');
+    $scope.getData('data/tab-dsc-shd.json', 'shd');
   }
 
   $scope.init();
@@ -67,20 +106,52 @@ angular.module('starter.controllers', [])
 })
 
 .controller('FinanceCtrl', function($scope, Utils) {
-  $scope.getDataSuccess = function(res) {
+  $scope.profitLoading = {
+    loading: true,
+    showIcon: true,
+    showError: false
+  }
+
+  $scope.lbtLoading = {
+    loading: true,
+    showIcon: true,
+    showError: false
+  }
+
+  $scope.flowLoading = {
+    loading: true,
+    showIcon: true,
+    showError: false
+  }
+
+  $scope.getDataSuccess = function(res, tag) {
     var res = res.data;
-    if(!parseInt(res.resultdata)) {
-      $scope.items = res.ResData;
+    if(parseInt(res.resultdata)) {
+      $scope[tag+'Data'] = res.ResData;
+      $scope[tag+'Loading'].loading = false;
+      $scope[tag+'Loading'].showIcon = false;
+      $scope[tag+'Loading'].showError = false;
+    }else {
+      $scope[tag+'Loading'].loading = true;
+      $scope[tag+'Loading'].showIcon = false;
+      $scope[tag+'Loading'].showError = true;
     }
   }
 
-  $scope.getData = function() {
-    Utils.showPop();
-    Utils.getJSON('data/finance-data.json', '', $scope.getDataSuccess);
+  $scope.getDataError = function(res, tag) {
+    $scope[tag+'Loading'].loading = true;
+    $scope[tag+'Loading'].showIcon = false;
+    $scope[tag+'Loading'].showError = true;
+  }
+
+  $scope.getData = function(url, tag) {
+    Utils.getJSON(url, '', $scope.getDataSuccess, $scope.getDataError, tag);
   }
   
   $scope.init = function() {
-    $scope.getData();
+    $scope.getData('data/finance-data-profit.json', 'profit');
+    $scope.getData('data/finance-data-lbt.json', 'lbt');
+    $scope.getData('data/finance-data-flow.json', 'flow');
   }
 
   $scope.init();

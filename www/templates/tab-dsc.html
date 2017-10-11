@@ -1,20 +1,120 @@
 <ion-view view-title="简介">
   <ion-content class="f-content">
-    <div class="f-table-box" ng-repeat="item in items">
+     <!-- 主要指标 -->
+    <div class="f-table-box">
       <div class="f-table-title">
-        <h1>{{item.title.name}}<span>{{item.title.tag}}</span><a ng-show="item.title.moreHref" href="{{item.title.moreHref}}">更多</a></h1>
+        <h1>主要指标<span ng-show="indexData.EndDate ? true : false">(<i>2017年报</i>)</span></h1>
       </div>
       <div class="f-table-body">
-        <ul class="list" ng-if="item.type">
-          <li class="item" ng-repeat="itemData in item.data">
-            <span class="{{itemData.class}}">{{itemData.data}}</span> {{itemData.name}}
+        <ul class="list f-list" ng-hide="indexLoading.loading">
+          <li class="item">
+            <span class="green">{{indexData.F001}}{{indexData.F001_1}}</span> 每股收益TTM
+          </li>
+          <li class="item">
+            <span class="green">{{indexData.F002}}{{indexData.F002_1}}</span> 每股净资产TTM
+          </li>
+          <li class="item">
+            <span class="green">{{indexData.F003}}{{indexData.F003_1}}</span> 营业收入
+          </li>
+          <li class="item">
+            <span class="green">{{indexData.F004}}{{indexData.F004_1}}</span> 同比增长（%）
+          </li>
+          <li class="item">
+            <span class="green">{{indexData.F005}}{{indexData.F005_1}}</span> 净利润
+          </li>
+          <li class="item">
+            <span class="green">{{indexData.F006}}{{indexData.F006_1}}</span> 同比增长（%）
+          </li>
+          <li class="item">
+            <span class="green">{{indexData.F007}}{{indexData.F007_1}}</span> 贝塔值
           </li>
         </ul>
-        <table class="f-table f-dsc-table" ng-if="!item.type">
-          <tr ng-repeat="itemData in item.data">
-            <td ng-repeat="itemDataTd in itemData">{{itemDataTd}}</td>
+        <div class="f-loading" ng-show="indexLoading.loading">
+          <ion-spinner icon="ios" ng-show="indexLoading.showIcon"></ion-spinner>
+          <div class="f-loading-error" ng-show="indexLoading.showError">加载失败!</div>
+        </div>
+      </div>
+    </div>
+    <!-- 公司资料 -->
+    <div class="f-table-box">
+      <div class="f-table-title">
+        <h1>公司资料</h1>
+      </div>
+      <div class="f-table-body">
+        <table class="f-table f-dsc-table" ng-hide="cmpLoading.loading">
+          <tr>
+            <td>公司名称</td>
+            <td>{{cmpData.F001}}</td>
+          </tr>
+          <tr>
+            <td>交易所</td>
+            <td>{{cmpData.F002}}</td>
+          </tr>
+          <tr>
+            <td>办公地址</td>
+            <td>{{cmpData.F003}}</td>
+          </tr>
+          <tr>
+            <td>公司网址</td>
+            <td>{{cmpData.F004}}</td>
+          </tr>
+          <tr>
+            <td>员工人数</td>
+            <td>{{cmpData.F005}}</td>
+          </tr>
+          <tr>
+            <td>经营范围</td>
+            <td>{{cmpData.F006}}</td>
           </tr>
         </table>
+        <div class="f-loading" ng-show="cmpLoading.loading">
+          <ion-spinner icon="ios" ng-show="cmpLoading.showIcon"></ion-spinner>
+          <div class="f-loading-error" ng-show="cmpLoading.showError">加载失败!</div>
+        </div>
+      </div>
+    </div>
+    <!-- 分红拆分 -->
+    <div class="f-table-box">
+      <div class="f-table-title">
+        <h1>分红拆分<a href="#/dsc-abs">更多</a></h1>
+      </div>
+      <div class="f-table-body">
+        <table class="f-table f-dsc-table" ng-hide="absLoading.loading">
+          <tr>
+            <td>公告日期</td>
+            <td>分红方案</td>
+          </tr>
+          <tr ng-repeat= 'data in absData'>
+            <td>{{data[0]}}</td>
+            <td>{{data[1]}}</td>
+          </tr>
+        </table>
+        <div class="f-loading" ng-show="absLoading.loading">
+          <ion-spinner icon="ios" ng-show="absLoading.showIcon"></ion-spinner>
+          <div class="f-loading-error" ng-show="absLoading.showError">加载失败!</div>
+        </div>
+      </div>
+    </div>
+    <!-- 股本股东 -->
+    <div class="f-table-box">
+      <div class="f-table-title">
+        <h1>股本股东<a href="#/dsc-shd">更多</a></h1>
+      </div>
+      <div class="f-table-body">
+        <table class="f-table f-dsc-table" ng-hide="shdLoading.loading">
+          <tr>
+            <td>公告日期</td>
+            <td>分红方案</td>
+          </tr>
+          <tr ng-repeat= 'data in shdData'>
+            <td>{{data[0]}}</td>
+            <td>{{data[1]}}</td>
+          </tr>
+        </table>
+        <div class="f-loading" ng-show="shdLoading.loading">
+          <ion-spinner icon="ios" ng-show="shdLoading.showIcon"></ion-spinner>
+          <div class="f-loading-error" ng-show="shdLoading.showError">加载失败!</div>
+        </div>
       </div>
     </div>
   </ion-content>

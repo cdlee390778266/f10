@@ -1,17 +1,77 @@
 <ion-view view-title="财务">
   <ion-content class="f-content">
-    <div class="f-table-box" ng-repeat="item in items">
+    <div class="f-table-box">
       <div class="f-table-title">
-        <h1>{{item.title.name}}{{item.title.tag}}<strong>{{item.title.date}}</strong></h1>
+        <h1>利润表（美元）<strong>截止日期：2017.06</strong></h1>
       </div>
       <div class="f-table-body finance-body">
-        <ul class="list">
-          <li class="item" ng-repeat="itemData in item.data">
-            <span>{{itemData[1]}}</span> {{itemData[0]}}
+        <ul class="list f-list" ng-hide="profitLoading.loading">
+          <li class="item">
+            <span>{{profitData.F001}}{{profitData.F001_1}}</span> 营业收入
+          </li>
+          <li class="item">
+            <span>{{profitData.F002}}{{profitData.F002_1}}</span> 毛利
+          </li>
+          <li class="item">
+            <span>{{profitData.F003}}{{profitData.F003_1}}</span> 经营利润
+          </li>
+          <li class="item">
+            <span>{{profitData.F004}}{{profitData.F004_1}}</span> 归属于普通股股东净利润
           </li>
         </ul>
-        <div class="go">
-            <a href="{{item.title.href}}" class="icon ion-chevron-right"></a>
+        <a href="#/finance-detail?type=0" class="go" ng-hide="profitLoading.loading"><span class="icon ion-chevron-right"></span></a>
+        <div class="f-loading" ng-show="profitLoading.loading">
+          <ion-spinner icon="ios" ng-show="profitLoading.showIcon"></ion-spinner>
+          <div class="f-loading-error" ng-show="profitLoading.showError">加载失败!</div>
+        </div>
+      </div>
+    </div>
+    <div class="f-table-box">
+      <div class="f-table-title">
+        <h1>资产负债表（美元）<strong>截止日期：2017.06</strong></h1>
+      </div>
+      <div class="f-table-body finance-body">
+        <ul class="list f-list" ng-hide="lbtLoading.loading">
+          <li class="item">
+            <span>{{lbtData.F001}}{{lbtData.F001_1}}</span>  总资产
+          </li>
+          <li class="item">
+            <span>{{lbtData.F002}}{{lbtData.F002_1}}</span>  总负债
+          </li>
+          <li class="item">
+            <span>{{lbtData.F003}}{{lbtData.F003_1}}</span>  股东权益
+          </li>
+        </ul>
+        <a href="#/finance-detail?type=1" class="go" ng-hide="lbtLoading.loading"><span class="icon ion-chevron-right"></span></a>
+        <div class="f-loading" ng-show="lbtLoading.loading">
+          <ion-spinner icon="ios" ng-show="lbtLoading.showIcon"></ion-spinner>
+          <div class="f-loading-error" ng-show="lbtLoading.showError">加载失败!</div>
+        </div>
+      </div>
+    </div>
+    <div class="f-table-box">
+      <div class="f-table-title">
+        <h1>现金流量表（美元）<strong>截止日期：2017.06</strong></h1>
+      </div>
+      <div class="f-table-body finance-body">
+        <ul class="list f-list" ng-hide="flowLoading.loading">
+          <li class="item">
+            <span>{{flowData.F001}}{{flowData.F001_1}}</span>   经营活动现金流量净额
+          </li>
+          <li class="item">
+            <span>{{flowData.F002}}{{flowData.F002_1}}</span>   投资活动现金流量净额
+          </li>
+          <li class="item">
+            <span>{{flowData.F003}}{{flowData.F003_1}}</span>  股东权益 融资活动现金流量净额
+          </li>
+          <li class="item">
+            <span>{{flowData.F004}}{{flowData.F004_1}}</span>  自由现金流
+          </li>
+        </ul>
+        <a href="#/finance-detail?type=1" class="go" ng-hide="flowLoading.loading"><span class="icon ion-chevron-right"></span></a>
+        <div class="f-loading" ng-show="flowLoading.loading">
+          <ion-spinner icon="ios" ng-show="flowLoading.showIcon"></ion-spinner>
+          <div class="f-loading-error" ng-show="flowLoading.showError">加载失败!</div>
         </div>
       </div>
     </div>

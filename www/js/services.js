@@ -39,7 +39,7 @@ angular.module('starter.services', [])
    * @param  {[type]} successCallback [成功回调]
    * @param  {[type]} errorCallback   [失败回调]
    */
-  Utils.getJSON = function(url, params, successCallback, errorCallback) {
+  Utils.getJSON = function(url, params, successCallback, errorCallback, tag) {
 
       if(!url)  return;
       
@@ -49,13 +49,16 @@ angular.module('starter.services', [])
         params: params
       }).then(function success(response) {
               // 请求成功执行代码
-              successCallback ? successCallback(response) : '';
+              successCallback ? successCallback(response, tag) : '';
               Utils.hidePop();
           }, function error(response) {
               // 请求失败执行代码
-              errorCallback ? errorCallback(response) : '';
-              Utils.showAlert('获取数据失败，请检查网络！');
-              Utils.hidePop();
+              if(errorCallback) {
+                errorCallback(response, tag);
+              }else {
+                Utils.showAlert('获取数据失败，请检查网络！');
+                Utils.hidePop();
+              }
       });
     };
 
