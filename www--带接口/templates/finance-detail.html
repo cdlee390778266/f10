@@ -1,0 +1,38 @@
+<ion-view view-title="{{pageTitle}}">  
+    <ion-content overflow-scroll="false" class="finance-detail">
+        <div style="display:flex;width: {{headW}};" class="bge5">
+            <div style="width:{{tdWidth}}px;" class="f-head lrb-left f-head-cmp">{{stkInfo.F001}}</div>
+            <div style="overflow: hidden;white-space: nowrap;width:{{headWr}};"> 
+                <ion-scroll direction="x" scrollbar-x="false" overflow-scroll="false" has-bouncing="false" delegate-handle="headContainerHandle" on-scroll="noScroll()" style="margin-top:0;">
+                    <div style="display:flex;width:{{bodyW}};" class="f-thead">
+                        <div style="width:{{tdWidth}}px;" class="f-head center" ng-repeat="head in item.tHead">{{head[0]}}<br/>({{head[1]}})</div>
+                    </div>
+                </ion-scroll> 
+            </div>
+        </div>
+        <div style="display:flex;width:{{headW}};">
+            <ion-scroll direction="y" scrollbar-y="false" overflow-scroll="false" has-bouncing="false" delegate-handle="leftContainerHandle" on-scroll="noScroll()" style="height:{{h}}px;">
+                <div ng-repeat="data in item.colNameArr" style="width:{{tdWidth}}px;" class="f-head bge5 lrb-left" ng-if="data[1]">
+                    {{data[0]}}
+                </div> 
+            </ion-scroll>
+            <div style="overflow: hidden;white-space: nowrap;width:{{headWr}};"> 
+                <ion-scroll direction="xy" scrollbar-x="false" scrollbar-y="false" overflow-scroll="false" has-bouncing="false" on-scroll="scrollRightHorizon()" delegate-handle="rightContainerHandle" style="height:{{h}}px;">
+                    <div style="width:{{bodyW}};"> 
+                        <div ng-repeat="data in item.tBody" style="display:flex;" ng-if="data[1]">
+                            <div style="width:{{tdWidth}}px;" class="f-head" ng-repeat="dataTd in data[0] track by $index">
+                                {{dataTd | fNumber : 2}}
+                            </div> 
+                        </div>
+                    </div>
+                </ion-scroll> 
+            </div>
+        </div> 
+    </ion-content> 
+    <div class="bar bar-footer f-footer">
+        <div class="button-bar button-dark">
+          <button class="button" ng-class="activeIndex == 0 ? 'button-assertive' : 'button-dark'" ng-click="tab(0)" >季度</button>
+          <button class="button" ng-class="activeIndex == 1 ? 'button-assertive' : 'button-dark'" ng-click="tab(1)" >年度</button>
+        </div>
+    </div>
+</ion-view>

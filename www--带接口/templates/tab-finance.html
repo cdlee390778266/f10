@@ -1,0 +1,74 @@
+<ion-view view-title="财务">
+  <ion-content class="f-content">
+    <div ng-hide="cwLoading.loading || !cwData.LRBDate">
+      <div class="f-table-box">
+        <div class="f-table-title">
+          <h1>利润表（{{cwData.LRBCurrency}}）<strong>{{cwData.LRBDate}}</strong></h1>
+        </div>
+        <div class="f-table-body finance-body">
+          <ul class="list f-list">
+            <li class="item">
+              <span>{{cwData.LRBITEM[0].F002 | fNumber : 2}}</span> 营业收入
+            </li>
+            <li class="item">
+              <span>{{cwData.LRBITEM[1].F002 | fNumber : 2}}</span> 毛利
+            </li>
+            <li class="item">
+              <span>{{cwData.LRBITEM[2].F002 | fNumber : 2}}</span> 经营利润
+            </li>
+            <li class="item">
+              <span>{{cwData.LRBITEM[3].F002 | fNumber : 2}}</span> 归属于普通股股东净利润
+            </li>
+          </ul>
+          <a nav-direction="forward" href="#/finance-detail?type=0" class="go" ng-hide="profitLoading.loading"><span class="icon ion-chevron-right"></span></a>
+        </div>
+      </div>
+      <div class="f-table-box">
+        <div class="f-table-title">
+          <h1>资产负债表（{{cwData.ZCFZCurrency}}）<strong>{{cwData.ZCFZDate}}</strong></h1>
+        </div>
+        <div class="f-table-body finance-body">
+          <ul class="list f-list">
+            <li class="item">
+              <span>{{cwData.ZCFZITEM[0].F002 | fNumber : 2}}</span>  总资产
+            </li>
+            <li class="item">
+              <span>{{cwData.ZCFZITEM[1].F002 | fNumber : 2}}</span>  总负债
+            </li>
+            <li class="item">
+              <span>{{cwData.ZCFZITEM[2].F002 | fNumber : 2}}</span>  股东权益
+            </li>
+          </ul>
+          <a nav-direction="forward" href="#/finance-detail?type=1" class="go" ng-hide="lbtLoading.loading"><span class="icon ion-chevron-right"></span></a>
+        </div>
+      </div>
+      <div class="f-table-box">
+        <div class="f-table-title">
+          <h1>现金流量表（{{cwData.XJLLCurrency}}）<strong>{{cwData.XJLLDate}}</strong></h1>
+        </div>
+        <div class="f-table-body finance-body">
+          <ul class="list f-list">
+            <li class="item">
+              <span>{{cwData.XJLLITEM[0].F002 | fNumber : 2}}</span>   经营活动现金流量净额
+            </li>
+            <li class="item">
+              <span>{{cwData.XJLLITEM[1].F002 | fNumber : 2}}</span>   投资活动现金流量净额
+            </li>
+            <li class="item">
+              <span>{{cwData.XJLLITEM[2].F002 | fNumber : 2}}</span> 融资活动现金流量净额
+            </li>
+            <li class="item">
+              <span>{{cwData.XJLLITEM[3].F002 | fNumber : 2}}</span>  自由现金流
+            </li>
+          </ul>
+          <a nav-direction="forward" href="#/finance-detail?type=2" class="go" ng-hide="flowLoading.loading"><span class="icon ion-chevron-right"></span></a>
+        </div>
+      </div>
+    </div>
+    <div class="empty padding" ng-hide="cwLoading.loading || cwData.LRBDate"><div>暂无数据</div></div>
+    <div class="f-loading" ng-show="cwLoading.loading">
+      <ion-spinner icon="ios" ng-show="cwLoading.showIcon"></ion-spinner>
+      <div class="f-loading-error" ng-show="cwLoading.showError">加载失败!</div>
+    </div>
+  </ion-content>
+</ion-view>

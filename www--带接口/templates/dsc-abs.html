@@ -1,0 +1,45 @@
+
+<ion-view view-title="分红拆分">
+  <ion-content class="padding">
+    <div class="f-table-box">
+      <div class="f-table-title">
+        <h1>分红派息</h1>
+      </div>
+      <div class="f-table-body">
+        <table class="f-table f-dsc-table" ng-hide="fhLoading.loading">
+          <tr>
+            <td>公告日期</td>
+            <td>分红方案</td>
+          </tr>
+          <tr ng-repeat="dataObj in fhData">
+            <td ng-repeat="data in dataObj"><div>{{data}}</div></td>
+          </tr>
+        </table>
+        <div class="f-loading" ng-show="fhLoading.loading">
+          <ion-spinner icon="ios" ng-show="fhLoading.showIcon"></ion-spinner>
+          <div class="f-loading-error" ng-show="fhLoading.showError">加载失败!</div>
+        </div>
+      </div>
+    </div>
+    <div class="f-table-box">
+      <div class="f-table-title">
+        <h1>股份拆分</h1>
+      </div>
+      <div class="f-table-body">
+        <table class="f-table f-dsc-table" ng-hide="gfLoading.loading">
+          <tr>
+            <td>拆分日期</td>
+            <td>拆分方案</td>
+          </tr>
+          <tr ng-repeat="dataObj in gfData">
+            <td ng-repeat="data in dataObj"><div>{{data}}</div></td>
+          </tr>
+        </table>
+        <div class="f-loading" ng-show="gfLoading.loading">
+          <ion-spinner icon="ios" ng-show="gfLoading.showIcon"></ion-spinner>
+          <div class="f-loading-error" ng-show="gfLoading.showError">加载失败!</div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

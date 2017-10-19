@@ -1,4 +1,4 @@
-<ion-view view-title="简介">
+<ion-view view-title="简况">
   <ion-content class="f-content">
      <!-- 主要指标 -->
     <div class="f-table-box">
@@ -6,29 +6,30 @@
         <h1>主要指标<span ng-show="indexData.EndDate ? true : false">(<i>2017年报</i>)</span></h1>
       </div>
       <div class="f-table-body">
-        <ul class="list f-list" ng-hide="indexLoading.loading">
+        <ul class="list f-list" ng-hide="indexLoading.loading || !indexData.F001">
           <li class="item">
-            <span class="green">{{indexData.F001}}{{indexData.F001_1}}</span> 每股收益TTM
+            <span class="{{indexData.F001 | filterColor}}">{{indexData.F001 | number : 4}}{{indexData.F001_1}}</span> 每股收益TTM
           </li>
           <li class="item">
-            <span class="green">{{indexData.F002}}{{indexData.F002_1}}</span> 每股净资产TTM
+            <span class="{{indexData.F002 | filterColor}}">{{indexData.F002 | number : 4}}{{indexData.F002_1}}</span> 每股净资产TTM
           </li>
           <li class="item">
-            <span class="green">{{indexData.F003}}{{indexData.F003_1}}</span> 营业收入
+            <span class="{{indexData.F003 | filterColor}}">{{indexData.F003 | fNumber : 2}}{{indexData.F003_1}}</span> 营业收入
           </li>
           <li class="item">
-            <span class="green">{{indexData.F004}}{{indexData.F004_1}}</span> 同比增长（%）
+            <span class="{{indexData.F004 | filterColor}}">{{indexData.F004 | number : 2}}{{indexData.F004_1}}%</span> 同比增长率（%）
           </li>
           <li class="item">
-            <span class="green">{{indexData.F005}}{{indexData.F005_1}}</span> 净利润
+            <span class="{{indexData.F005 | filterColor}}">{{indexData.F005 | fNumber : 2}}{{indexData.F005_1}}</span> 净利润
           </li>
           <li class="item">
-            <span class="green">{{indexData.F006}}{{indexData.F006_1}}</span> 同比增长（%）
+            <span class="{{indexData.F006 | filterColor}}">{{indexData.F006 | number : 2}}{{indexData.F006_1}}%</span> 同比增长率（%）
           </li>
           <li class="item">
-            <span class="green">{{indexData.F007}}{{indexData.F007_1}}</span> 贝塔值
+            <span class="{{indexData.F007 | filterColor}}">{{indexData.F007 | number : 2}}{{indexData.F007_1}}</span> 贝塔值
           </li>
         </ul>
+        <div class="empty padding" ng-hide="indexLoading.loading || indexData.F001"><div>暂无数据{{shdData.length}}</div></div>
         <div class="f-loading" ng-show="indexLoading.loading">
           <ion-spinner icon="ios" ng-show="indexLoading.showIcon"></ion-spinner>
           <div class="f-loading-error" ng-show="indexLoading.showError">加载失败!</div>
@@ -41,7 +42,7 @@
         <h1>公司资料</h1>
       </div>
       <div class="f-table-body">
-        <table class="f-table f-dsc-table" ng-hide="cmpLoading.loading">
+        <table class="f-table f-dsc-table" ng-hide="cmpLoading.loading || !cmpData.F001">
           <tr>
             <td>公司名称</td>
             <td>{{cmpData.F001}}</td>
@@ -67,6 +68,7 @@
             <td>{{cmpData.F006}}</td>
           </tr>
         </table>
+        <div class="empty padding" ng-hide="cmpLoading.loading || cmpData.F001"><div>暂无数据{{shdData.length}}</div></div>
         <div class="f-loading" ng-show="cmpLoading.loading">
           <ion-spinner icon="ios" ng-show="cmpLoading.showIcon"></ion-spinner>
           <div class="f-loading-error" ng-show="cmpLoading.showError">加载失败!</div>
@@ -76,19 +78,19 @@
     <!-- 分红拆分 -->
     <div class="f-table-box">
       <div class="f-table-title">
-        <h1>分红拆分<a href="#/dsc-abs">更多</a></h1>
+        <h1>分红拆分<a nav-direction="forward" href="#/dsc-abs">更多</a></h1>
       </div>
       <div class="f-table-body">
-        <table class="f-table f-dsc-table" ng-hide="absLoading.loading">
+        <table class="f-table f-dsc-table" ng-hide="absLoading.loading || absData.length <= 0">
           <tr>
             <td>公告日期</td>
             <td>分红方案</td>
           </tr>
-          <tr ng-repeat= 'data in absData'>
-            <td>{{data[0]}}</td>
-            <td>{{data[1]}}</td>
+          <tr ng-repeat="dataObj in absData | limitTo : 3">
+            <td ng-repeat="data in dataObj">{{data}}</td>
           </tr>
         </table>
+        <div class="empty padding" ng-hide="absLoading.loading || absData.length > 0"><div>暂无数据</div></div>
         <div class="f-loading" ng-show="absLoading.loading">
           <ion-spinner icon="ios" ng-show="absLoading.showIcon"></ion-spinner>
           <div class="f-loading-error" ng-show="absLoading.showError">加载失败!</div>
@@ -98,19 +100,28 @@
     <!-- 股本股东 -->
     <div class="f-table-box">
       <div class="f-table-title">
-        <h1>股本股东<a href="#/dsc-shd">更多</a></h1>
+        <h1>股本股东<a nav-direction="forward" href="#/dsc-shd">更多</a></h1>
       </div>
       <div class="f-table-body">
-        <table class="f-table f-dsc-table" ng-hide="shdLoading.loading">
+        <table class="f-table f-dsc-table" ng-hide="shdLoading.loading || !shdData.F001">
           <tr>
-            <td>公告日期</td>
-            <td>分红方案</td>
+            <td>公司股本</td>
+            <td>{{shdData.F001 | number : 2}}{{shdData.F001_1}}</td>
           </tr>
-          <tr ng-repeat= 'data in shdData'>
-            <td>{{data[0]}}</td>
-            <td>{{data[1]}}</td>
+          <tr>
+            <td>机构持有比率</td>
+            <td>{{shdData.F002 | number : 2}}%</td>
+          </tr>
+          <tr>
+            <td>基金持有比率</td>
+            <td>{{shdData.F003 | number : 2}}%</td>
+          </tr>
+          <tr>
+            <td>内部持有人比率</td>
+            <td>{{shdData.F004 | number : 2}}%</td>
           </tr>
         </table>
+        <div class="empty padding" ng-hide="shdLoading.loading || shdData.F001"><div>暂无数据{{shdData.length}}</div></div>
         <div class="f-loading" ng-show="shdLoading.loading">
           <ion-spinner icon="ios" ng-show="shdLoading.showIcon"></ion-spinner>
           <div class="f-loading-error" ng-show="shdLoading.showError">加载失败!</div>

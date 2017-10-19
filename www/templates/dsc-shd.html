@@ -1,16 +1,80 @@
-
-<ion-view view-title="{{chat.name}}">
+<ion-view view-title="股本股东">
   <ion-content class="padding">
-    <div class="f-table-box" ng-repeat="item in items">
+    <!-- 公司股本 -->
+    <div class="f-table-box">
       <div class="f-table-title">
-        <h1>{{item.title.name}}</h1>
+        <h1>公司股本</h1>
       </div>
       <div class="f-table-body">
-        <table class="f-table f-dsc-table">
-          <tr ng-repeat="data in item.data">
-            <td ng-repeat="dataTd in data">{{dataTd}}</td>
+        <table class="f-table f-dsc-table" ng-hide="gsLoading.loading || !gsData.F001">
+          <tr>
+            <td>已发行股本</td>
+            <td>{{gsData.F001}}（{{gsData.F001_1}}）</td>
           </tr>
         </table>
+        <div class="empty padding" ng-hide="gsLoading.loading || gsData.F001"><div>暂无数据{{shdData.length}}</div></div>
+        <div class="f-loading" ng-show="gsLoading.loading">
+          <ion-spinner icon="ios" ng-show="gsLoading.showIcon"></ion-spinner>
+          <div class="f-loading-error" ng-show="gsLoading.showError">加载失败!</div>
+        </div>
+      </div>
+    </div>
+    <!-- 机构持股 -->
+    <div class="f-table-box">
+      <div class="f-table-title">
+        <h1>机构持股</h1>
+      </div>
+      <div class="f-table-body">
+        <div class="table-scroll" ng-hide="jgcgLoading.loading || jgcgData.length <= 0">
+          <table class="f-table f-dsc-table">
+            <tr>
+              <td>持股名称</td>
+              <td>持股数</td>
+              <td>变化率%</td>
+              <td>持股比例%</td>
+            </tr>
+            <tr ng-repeat="dataObj in jgcgData">
+              <td><div>{{dataObj.F001}}</div></td>
+              <td>{{dataObj.F002 | shdNumber : 2}}<span></span>股</td>
+              <td>{{dataObj.F003}}</td>
+              <td>{{dataObj.F004}}</td>
+            </tr>
+          </table>
+        </div>
+        <div class="empty padding" ng-hide="jgcgLoading.loading || jgcgData.length > 0"><div>暂无数据{{shdData.length}}</div></div>
+        <div class="f-loading" ng-show="jgcgLoading.loading">
+          <ion-spinner icon="ios" ng-show="jgcgLoading.showIcon"></ion-spinner>
+          <div class="f-loading-error" ng-show="jgcgLoading.showError">加载失败!</div>
+        </div>
+      </div>
+    </div>
+    <!-- 基金持股 -->
+    <div class="f-table-box">
+      <div class="f-table-title">
+        <h1>基金持股</h1>
+      </div>
+      <div class="f-table-body">
+        <div class="table-scroll" ng-hide="jjcgLoading.loading || jjcgData.length <= 0">
+          <table class="f-table f-dsc-table">
+            <tr>
+              <td>持股名称</td>
+              <td>持股数</td>
+              <td>变化率%</td>
+              <td>持股比例%</td>
+            </tr>
+            <tr ng-repeat="dataObj in jjcgData">
+              <td><div>{{dataObj.F001}}</div></td>
+              <td>{{dataObj.F002 | shdNumber : 2}}<span></span>股</td>
+              <td>{{dataObj.F003}}</td>
+              <td>{{dataObj.F004}}</td>
+            </tr>
+          </table>
+        </div>
+        <div class="empty padding" ng-hide="jjcgLoading.loading || jjcgData.length > 0"><div>暂无数据{{shdData.length}}</div></div>
+        <div class="f-loading" ng-show="jjcgLoading.loading">
+          <ion-spinner icon="ios" ng-show="jjcgLoading.showIcon"></ion-spinner>
+          <div class="f-loading-error" ng-show="jjcgLoading.showError">加载失败!</div>
+        </div>
       </div>
     </div>
   </ion-content>

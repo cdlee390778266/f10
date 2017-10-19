@@ -1,0 +1,216 @@
+/* Empty. Add your own CSS if you like */
+a {
+    text-decoration: none;
+}
+.home-tabs > .tabs {
+    top: 0;
+}
+.f-content {
+    top: 49px;
+}
+.f-table {
+    font-size: 15px;
+}
+.f-table-title h1{
+    position: relative;
+    height: 44px;
+    line-height: 44px;
+    font-size: 16px;
+    padding: 0;
+    margin: 0;
+    padding-left: 20px;
+    padding-right: 10px;
+    font-weight: bold;
+    background: #efefef;
+}
+.f-table-title h1:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    display: block;
+    width: 6px;
+    height: 20px;
+    margin-top: -10px;
+    background: #d53d38;
+}
+.f-table-title h1 span {
+    color: #666;
+    margin-left: 5px;
+}
+.f-table-title h1 a {
+    font-weight: normal;
+    float: right;
+    color: #999;
+}
+.f-table-title h1 strong {
+    font-weight: normal;
+    float: right;
+    color: #999;
+}
+.f-table-body .item {
+    padding: 10px;
+    font-size: 15px;
+}
+.f-table {
+    width: 100%;
+}
+.f-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    vertical-align: middle;
+}
+.f-dsc-table tr td:first-child{
+    width: 100px;
+}
+.f-left {
+    text-align: left;
+}
+.f-center {
+    text-align: center;
+}
+.f-right {
+    text-align: right;
+}
+.f-list .item {
+    clear: both;
+}
+.item span {
+    float: right;
+}
+.item .red {
+    color: #FE0404;
+}
+.item .green {
+    color: green;
+}
+.f-table-body {
+    position: relative;
+}
+.f-table-body .go {
+    position: absolute;
+    top: 0;
+    right: 0px;
+    bottom: 0;
+    z-index: 8;
+    display: block;
+    width: 40px;
+}
+.f-table-body .go  span{
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    margin-top: -10px;
+    z-index: 8;
+}
+.finance-body {
+    padding-right: 20px;
+}
+.finance-body .item {
+    border-color: transparent;
+}
+.f-loading {
+    height: 60px;
+    background-color: #fff;
+}
+.f-loading .spinner-ios {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -14px;
+    margin-left: -14px;
+}
+.f-loading .f-loading-error {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -10px;
+    margin-left: -30px;
+    color: #999;
+    text-align: center;
+}
+.f-head{
+    border-bottom:solid 1px #ccc;
+    border-right:solid 1px #ccc;
+    height:40px;
+    display:flex;
+    align-items:center;
+    font-size:14px;
+    color:#262626;
+    text-align: center;
+    justify-content:center;
+}
+.bge5 {
+    background: #e5e5e5;
+}
+.f-footer {
+    padding: 0;
+}
+.f-footer .button {
+    border-radius: 0 !important;
+}
+.f-thead .f-head:last-child {
+    border-right: 0;
+}
+.f-list {
+    margin-bottom: 0;
+}
+.empty {
+    text-align: center;
+    color: #999;
+    border: 1px solid #ddd;
+    margin: 5px 15px;
+}
+.table-scroll {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overflow-scrolling: touch;
+    -webkit-overflow-scrolling: touch /*iOS 滚动弹簧效果 */
+}
+.table-scroll .f-table {
+    width: auto;
+    min-width: 100%;
+}
+.table-scroll .f-table  td {
+    white-space : nowrap;
+    text-align: center;
+}
+.table-scroll .f-table  tr td:first-child div{
+    white-space : normal;
+    width: 100px;
+    text-align: left;
+}
+.center {
+    text-align: center !important;
+}
+.left {
+    text-align: left !important;
+}
+.right {
+    text-align: right !important;
+}
+.f-head {
+    text-align: left;
+    padding: 0 10px;
+}
+.lrb-left {
+    line-height: 14px;
+    text-align: left;
+    justify-content:left;
+}
+.f-dsc-table tr td:first-child div{
+    width: 100px;
+}
+.f-footer .button-assertive {
+    background-color: #EA3031;
+}
+.f-footer .button-dark{
+    background-color: #393939;
+}
+.finance-detail .scroll-view{
+    margin-top: 0;
+}
+.tab-title {
+    font-size: 16px;
+}

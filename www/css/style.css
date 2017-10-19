@@ -58,7 +58,7 @@ a {
     vertical-align: middle;
 }
 .f-dsc-table tr td:first-child{
-    width: 80px;
+    width: 100px;
 }
 .f-left {
     text-align: left;
@@ -68,6 +68,9 @@ a {
 }
 .f-right {
     text-align: right;
+}
+.f-list .item {
+    clear: both;
 }
 .item span {
     float: right;
@@ -148,4 +151,49 @@ a {
 }
 .f-list {
     margin-bottom: 0;
+}
+.empty {
+    text-align: center;
+    color: #999;
+    border: 1px solid #ddd;
+    margin: 5px 15px;
+}
+.table-scroll {
+    width: 100%;
+    overflow-x: scroll;
+}
+.table-scroll .f-table {
+    width: auto;
+    min-width: 100%;
+}
+.table-scroll .f-table  td {
+    white-space : nowrap;
+    text-align: center;
+}
+.table-scroll .f-table  tr td:first-child div{
+    white-space : normal;
+    width: 100px;
+    text-align: left;
+}
+.center {
+    text-align: center !important;
+}
+.left {
+    text-align: left !important;
+}
+.right {
+    text-align: right !important;
+}
+.f-head {
+    text-align: left;
+    padding: 0 10px;
+}
+.lrb-left {
+    line-height: 14px;
+}
+.f-head  {
+    font-size: 14px;
+}
+.f-dsc-table tr td:first-child div{
+    width: 100px;
 }

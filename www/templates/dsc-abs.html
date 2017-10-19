@@ -1,16 +1,44 @@
 
-<ion-view view-title="{{chat.name}}">
+<ion-view view-title="分红拆分">
   <ion-content class="padding">
-    <div class="f-table-box" ng-repeat="item in items">
+    <div class="f-table-box">
       <div class="f-table-title">
-        <h1>{{item.title.name}}</h1>
+        <h1>分红派息</h1>
       </div>
       <div class="f-table-body">
-        <table class="f-table f-dsc-table">
-          <tr ng-repeat="data in item.data">
-            <td ng-repeat="dataTd in data">{{dataTd}}</td>
+        <table class="f-table f-dsc-table" ng-hide="fhLoading.loading">
+          <tr>
+            <td>公告日期</td>
+            <td>分红方案</td>
+          </tr>
+          <tr ng-repeat="dataObj in fhData">
+            <td ng-repeat="data in dataObj">{{data}}</td>
           </tr>
         </table>
+        <div class="f-loading" ng-show="fhLoading.loading">
+          <ion-spinner icon="ios" ng-show="fhLoading.showIcon"></ion-spinner>
+          <div class="f-loading-error" ng-show="fhLoading.showError">加载失败!</div>
+        </div>
+      </div>
+    </div>
+    <div class="f-table-box">
+      <div class="f-table-title">
+        <h1>股份拆分</h1>
+      </div>
+      <div class="f-table-body">
+        <table class="f-table f-dsc-table" ng-hide="gfLoading.loading">
+          <tr>
+            <td>拆分日期</td>
+            <td>拆分方案</td>
+          </tr>
+          <tr ng-repeat="dataObj in gfData">
+            <td ng-repeat="data in dataObj">{{data}}</td>
+          </tr>
+        </table>
+        <div class="f-loading" ng-show="gfLoading.loading">
+          <ion-spinner icon="ios" ng-show="gfLoading.showIcon"></ion-spinner>
+          <div class="f-loading-error" ng-show="gfLoading.showError">加载失败!</div>
+        </div>
       </div>
     </div>
   </ion-content>

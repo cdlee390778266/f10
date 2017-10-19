@@ -1,0 +1,73 @@
+<ion-view view-title="股本股东">
+  <ion-content class="padding" overflow-scroll="true">
+    <div ng-hide="gbLoading.loading || !gbData.F001">
+      <!-- 公司股本 -->
+      <div class="f-table-box">
+        <div class="f-table-title">
+          <h1>公司股本<strong>{{gbData.EndDate}}</strong></h1>
+        </div>
+        <div class="f-table-body">
+          <table class="f-table f-dsc-table">
+            <tr>
+              <td>已发行股本</td>
+              <td>{{gbData.F001 | number : 2}}（{{gbData.F001_1}}）</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <!-- 机构持股 -->
+      <div class="f-table-box">
+        <div class="f-table-title">
+          <h1>机构持股 <strong>{{gbData.JGCGDate}}</strong></h1>
+        </div>
+        <div class="f-table-body">
+          <div class="table-scroll">
+            <table class="f-table f-dsc-table">
+              <tr>
+                <td>持股名称</td>
+                <td>持股数</td>
+                <td>变化率%</td>
+                <td>持股比例%</td>
+              </tr>
+              <tr ng-repeat="dataObj in gbData.JGCG_ITEM">
+                <td><div>{{dataObj.F001}}</div></td>
+                <td>{{dataObj.F002 | shdNumber : 2}}<span></span>股</td>
+                <td>{{dataObj.F003 | number : 2}}</td>
+                <td>{{dataObj.F004 | number : 2}}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!-- 基金持股 -->
+      <div class="f-table-box">
+        <div class="f-table-title">
+          <h1>基金持股 <strong>{{gbData.JJCGDate}}</strong></h1>
+        </div>
+        <div class="f-table-body">
+          <div class="table-scroll">
+            <table class="f-table f-dsc-table">
+              <tr>
+                <td>持股名称</td>
+                <td>持股数</td>
+                <td>变化率%</td>
+                <td>持股比例%</td>
+              </tr>
+              <tr ng-repeat="dataObj in gbData.JJCG_ITEM">
+                <td><div>{{dataObj.F001}}</div></td>
+                <td>{{dataObj.F002 | shdNumber : 2}}<span></span>股</td>
+                <td>{{dataObj.F003 | number : 2}}</td>
+                <td>{{dataObj.F004 | number : 2}}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="empty padding" ng-hide="gbLoading.loading || gbData.F001"><div>暂无数据</div></div>
+    <div class="f-loading" ng-show="gbLoading.loading">
+      <ion-spinner icon="ios" ng-show="gbLoading.showIcon"></ion-spinner>
+      <div class="f-loading-error" ng-show="gbLoading.showError">加载失败!</div>
+    </div>
+  </ion-content>
+</ion-view>

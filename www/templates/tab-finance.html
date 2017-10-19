@@ -7,19 +7,19 @@
       <div class="f-table-body finance-body">
         <ul class="list f-list" ng-hide="profitLoading.loading">
           <li class="item">
-            <span>{{profitData.F001}}{{profitData.F001_1}}</span> 营业收入
+            <span>{{profitData.F001 | fNumber : 2}}</span> 营业收入
           </li>
           <li class="item">
-            <span>{{profitData.F002}}{{profitData.F002_1}}</span> 毛利
+            <span>{{profitData.F002 | fNumber : 2}}</span> 毛利
           </li>
           <li class="item">
-            <span>{{profitData.F003}}{{profitData.F003_1}}</span> 经营利润
+            <span>{{profitData.F003 | fNumber : 2}}</span> 经营利润
           </li>
           <li class="item">
-            <span>{{profitData.F004}}{{profitData.F004_1}}</span> 归属于普通股股东净利润
+            <span>{{profitData.F004 | fNumber : 2}}</span> 归属于普通股股东净利润
           </li>
         </ul>
-        <a href="#/finance-detail?type=0" class="go" ng-hide="profitLoading.loading"><span class="icon ion-chevron-right"></span></a>
+        <a nav-direction="forward" href="#/finance-detail?type=0" class="go" ng-hide="profitLoading.loading"><span class="icon ion-chevron-right"></span></a>
         <div class="f-loading" ng-show="profitLoading.loading">
           <ion-spinner icon="ios" ng-show="profitLoading.showIcon"></ion-spinner>
           <div class="f-loading-error" ng-show="profitLoading.showError">加载失败!</div>
@@ -33,13 +33,13 @@
       <div class="f-table-body finance-body">
         <ul class="list f-list" ng-hide="lbtLoading.loading">
           <li class="item">
-            <span>{{lbtData.F001}}{{lbtData.F001_1}}</span>  总资产
+            <span>{{lbtData.F001 | fNumber : 2}}</span>  总资产
           </li>
           <li class="item">
-            <span>{{lbtData.F002}}{{lbtData.F002_1}}</span>  总负债
+            <span>{{lbtData.F002 | fNumber : 2}}</span>  总负债
           </li>
           <li class="item">
-            <span>{{lbtData.F003}}{{lbtData.F003_1}}</span>  股东权益
+            <span>{{lbtData.F003 | fNumber : 2}}</span>  股东权益
           </li>
         </ul>
         <a href="#/finance-detail?type=1" class="go" ng-hide="lbtLoading.loading"><span class="icon ion-chevron-right"></span></a>
@@ -56,16 +56,16 @@
       <div class="f-table-body finance-body">
         <ul class="list f-list" ng-hide="flowLoading.loading">
           <li class="item">
-            <span>{{flowData.F001}}{{flowData.F001_1}}</span>   经营活动现金流量净额
+            <span>{{flowData.F001 | fNumber : 2}}</span>   经营活动现金流量净额
           </li>
           <li class="item">
-            <span>{{flowData.F002}}{{flowData.F002_1}}</span>   投资活动现金流量净额
+            <span>{{flowData.F002 | fNumber : 2}}</span>   投资活动现金流量净额
           </li>
           <li class="item">
-            <span>{{flowData.F003}}{{flowData.F003_1}}</span>  股东权益 融资活动现金流量净额
+            <span>{{flowData.F003 | fNumber : 2}}</span> 融资活动现金流量净额
           </li>
           <li class="item">
-            <span>{{flowData.F004}}{{flowData.F004_1}}</span>  自由现金流
+            <span>{{flowData.F004 | fNumber : 2}}</span>  自由现金流
           </li>
         </ul>
         <a href="#/finance-detail?type=1" class="go" ng-hide="flowLoading.loading"><span class="icon ion-chevron-right"></span></a>
